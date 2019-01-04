@@ -27,7 +27,7 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 ## How to use
 - import the module
 ```python
-from pigpio_encoder import Rotary
+from pigpio_encoder.pigpio_encoder import Rotary
 ```
 - create a callback function for the Rotary Encoder.
     > You must pass a positional argument to retrieve the counter value.
