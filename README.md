@@ -111,3 +111,9 @@ my_rotary.setup_switch(debounce=200, long_press=True, sw_short_callback=sw_short
 my_rotary.watch()
 
 ```
+
+___
+
+## Thanks to...
+- [joan2937](https://github.com/joan2937) for the awesome [pigpio library](https://github.com/joan2937/pigpio)
+- [Raphael Yancey](https://github.com/raphaelyancey) for inspiring me this library with his [similar project](https://github.com/raphaelyancey/pyKY040)
