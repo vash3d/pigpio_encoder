@@ -19,7 +19,7 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 - Install the pigpio library *(check [pigpio documentation](http://abyz.me.uk/rpi/pigpio/download.html) for alternative installation method)*
  - `sudo apt-get update`
  - `sudo apt-get install pigpio python-pigpio python3-pigpio`
-- Install the pigpio_encoder library *(virtual environment reccomended)*
+- Install the pigpio_encoder library
  - `pip install pigpio_encoder`
 - start pigpio daemon
  - `sudo pigpiod`
