@@ -1,5 +1,5 @@
 # Rotary encoder class based on pigpio library
-# version: 0.1.0
+# version: 0.1.1
 
 import pigpio
 import time
@@ -92,8 +92,8 @@ class Rotary:
 		self.clk_rising = self.clk_input.callback(self.clk, pigpio.RISING_EDGE, clk_rise)
 		self.dt_falling = self.dt_input.callback(self.dt, pigpio.FALLING_EDGE, dt_fall)
 		self.dt_rising = self.dt_input.callback(self.dt, pigpio.RISING_EDGE, dt_rise)
-		self.sw_falling = self.sw_input.callback(17, pigpio.FALLING_EDGE, sw_fall)
-		self.sw_rising = self.sw_input.callback(17, pigpio.RISING_EDGE, sw_rise)
+		self.sw_falling = self.sw_input.callback(self.sw, pigpio.FALLING_EDGE, sw_fall)
+		self.sw_rising = self.sw_input.callback(self.sw, pigpio.RISING_EDGE, sw_rise)
 
 
 	def setup_rotary(self, **kwargs):
