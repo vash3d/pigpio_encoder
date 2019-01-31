@@ -15,7 +15,7 @@ setup(name='pigpio_encoder',
       long_description_content_type='text/markdown',
       classifiers=[
         'Development Status :: 4 - Beta',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries',
       ],

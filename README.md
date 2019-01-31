@@ -1,6 +1,6 @@
 # Pigpio Encoder
 
-###### Version: 0.1.1
+###### Version: 0.2.0
 
 
 #### Python module for the KY040 rotary encoder.
