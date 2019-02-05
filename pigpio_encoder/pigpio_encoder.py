@@ -114,7 +114,7 @@ class Rotary:
 
 	def setup_switch(self, **kwargs):
 		if 'debounce' in kwargs:
-			self.sw_debounce = kwargs['debouce']
+			self.sw_debounce = kwargs['debounce']
 		if 'long_press' in kwargs:
 			self.long_press_opt = kwargs['long_press']
 		if 'sw_short_callback' in kwargs:
