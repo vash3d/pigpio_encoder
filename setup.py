@@ -21,6 +21,7 @@ setup(name='pigpio_encoder',
       ],
       keywords='rotary encoder switch ky040 gpio raspberry',
       url='https://github.com/vash3d/pigpio_encoder',
+      download_url='https://github.com/vash3d/pigpio_encoder/archive/0.2.1.tar.gz'
       author='vash',
       author_email='vash.3d@gmail.com',
       license='GNU GPLv3',
