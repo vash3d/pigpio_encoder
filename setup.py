@@ -9,7 +9,7 @@ with open(path.join(file_path, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='pigpio_encoder',
-      version='0.2.1',
+      version='0.2.2',
       description='Python module for for quickly interface a KY040 rotary encoder with Raspberry Pi.',
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -21,7 +21,7 @@ setup(name='pigpio_encoder',
       ],
       keywords='rotary encoder switch ky040 gpio raspberry',
       url='https://github.com/vash3d/pigpio_encoder',
-      download_url='https://github.com/vash3d/pigpio_encoder/archive/0.2.1.tar.gz',
+      download_url='https://github.com/vash3d/pigpio_encoder/archive/0.2.2.tar.gz',
       author='vash',
       author_email='vash.3d@gmail.com',
       license='GNU GPLv3',
