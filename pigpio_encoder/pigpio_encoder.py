@@ -105,8 +105,8 @@ class Rotary:
 			self.max = kwargs['max']
 		if 'scale' in kwargs:
 			self.scale = kwargs['scale']
-		if 'debouce' in kwargs:
-			self.debounce = kwargs['debouce']
+		if 'debounce' in kwargs:
+			self.debounce = kwargs['debounce']
 			self.clk_input.set_glitch_filter(self.clk, self.debounce)
 			self.dt_input.set_glitch_filter(self.dt, self.debounce)
 		if 'rotary_callback' in kwargs:
