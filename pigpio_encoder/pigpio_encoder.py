@@ -4,13 +4,20 @@
 import pigpio
 import time
 
+# States
+DT1 = 'D' # DT is high
+DT0 = 'd' # DT is low
+CLK1 = 'C' # CLK is high
+CLK0 = 'c' # CLK is low
+
+# State sequences
+SEQUENCE_UP = DT1 + CLK1 + DT0 + CLK0
+SEQUENCE_DOWN = CLK1 + DT1 + CLK0 + DT0
+
 
 class Rotary:
 
-    # Set the sequence for CW and CCW
-    sequence = []
-    sequence_up = ['dt1', 'clk1', 'dt0', 'clk0']
-    sequence_down = ['clk1', 'dt1', 'clk0', 'dt0']
+    sequence = ''
 
     # Default values for the rotary encoder
     min = 0
@@ -65,27 +72,27 @@ class Rotary:
 
     def clk_fall(self, gpio, level, tick):
         if len(self.sequence) > 2:
-            self.sequence.clear()
-        self.sequence.append('clk1')
+            self.sequence = ''
+        self.sequence += CLK1
 
     def clk_rise(self, gpio, level, tick):
-        self.sequence.append('clk0')
-        if self.sequence == self.sequence_up:
+        self.sequence += CLK0
+        if self.sequence == SEQUENCE_UP:
             if self.counter < self.max:
                 self.counter += self.scale
-            self.sequence.clear()
+            self.sequence = ''
 
     def dt_fall(self, gpio, level, tick):
         if len(self.sequence) > 2:
-            self.sequence.clear()
-        self.sequence.append('dt1')
+            self.sequence = ''
+        self.sequence += DT1
 
     def dt_rise(self, gpio, level, tick):
-        self.sequence.append('dt0')
-        if self.sequence == self.sequence_down:
+        self.sequence += DT0
+        if self.sequence == SEQUENCE_DOWN:
             if self.counter > self.min:
                 self.counter -= self.scale
-            self.sequence.clear()
+            self.sequence = ''
 
     def sw_rise(self, gpio, level, tick):
         if self.long_press_opt:
