@@ -141,12 +141,10 @@ class Rotary:
 
     def watch(self):
         """
-        Do not use! It will eat 100% CPU time on one core.
+        A simple convenience function to have a waiting loop
         """
         while True:
-            if self.counter != self.last_counter:
-                self.last_counter = self.counter
-                self.rotary_callback(self.counter)
+            time.sleep(10)
 
     def short_press(self):
         self.sw_short_callback()
