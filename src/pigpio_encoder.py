@@ -121,7 +121,7 @@ class Rotary:
             self.short_press()
 
     def setup_rotary(self, **kwargs):
-        # rotary callback has to be set first since e.g. the self.counter property depends on it
+        # rotary callback has to be set first since the self.counter property depends on it
         if 'rotary_callback' in kwargs:
             self.rotary_callback = kwargs['rotary_callback']
         if 'min' in kwargs:
