@@ -29,4 +29,7 @@ setup(name='pigpio_encoder',
       packages=find_packages(where='src'),
       include_package_data=True,
       zip_safe=False,
-      )
+      install_requires = [
+              'pigiop',
+            ],
+)
