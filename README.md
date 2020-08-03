@@ -52,9 +52,9 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 
     ```python
     my_rotary = Rotary(
-            clk_gpio=gpio_id, 
-            dt_gpio=gpio_id, 
-            sw_gpio=gpio_id
+            clk_gpio=<gpio_id of clk signal>, 
+            dt_gpio=<gpio_id of dt signal>, 
+            sw_gpio=<gpio_id of switch signal>
             )
     ```
 - setup the rotary encoder
@@ -62,11 +62,11 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 
     ```python
     my_rotary.setup_rotary(
-            min=min_value, 
-            max=max__value, 
-            scale=scale_value, 
-            debounce=debounce_value, 
-            rotary_callback=rotary_callback
+            min=<min_value>, 
+            max=<max_value>, 
+            scale=<scale_value>, 
+            debounce=<debounce_value>, 
+            rotary_callback=<rotary_callback>
             )
     ```
 - setup the switch
@@ -74,10 +74,10 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 
     ```python
     my_rotary.setup_switch(
-            debounce=debounce_value, 
-            long_press=True, 
-            sw_short_callback=sw_short_callback, 
-            sw_long_callback=sw_long_callback
+            debounce=<debounce_value>, 
+            long_press=<True>, 
+            sw_short_callback=<sw_short_callback>, 
+            sw_long_callback=<sw_long_callback>
             )
     ```
 
