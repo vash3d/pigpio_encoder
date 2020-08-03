@@ -138,7 +138,6 @@ class Rotary:
             self.pi.set_glitch_filter(self.dt_gpio, self.debounce)
 
     def setup_switch(self, **kwargs):
-        # rotary callback has to be set first since e.g. the self.counter property depends on it
         if 'debounce' in kwargs:
             self.sw_gpio_debounce = kwargs['debounce']
         if 'long_press' in kwargs:
