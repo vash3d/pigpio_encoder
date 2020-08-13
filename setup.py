@@ -30,6 +30,6 @@ setup(name='pigpio_encoder',
       include_package_data=True,
       zip_safe=False,
       install_requires = [
-              'pigiop',
+              'pigpio',
             ],
 )
