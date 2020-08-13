@@ -166,7 +166,7 @@ class Rotary:
             time.sleep(10)
 
     def short_press(self):
-        self.sw_gpio_short_callback()
+        self.sw_short_callback()
 
     def long_press(self):
-        self.sw_gpio_long_callback()
+        self.sw_long_callback()
