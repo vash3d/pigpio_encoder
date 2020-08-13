@@ -120,32 +120,43 @@ class Rotary:
         else:
             self.short_press()
 
-    def setup_rotary(self, **kwargs):
+    def setup_rotary(self,
+                    rotary_callback,
+                    min = None,
+                    max = None,
+                    scale = None,
+                    debounce = None,
+                     ):
         # rotary callback has to be set first since the self.counter property depends on it
-        if 'rotary_callback' in kwargs:
-            self.rotary_callback = kwargs['rotary_callback']
-        if 'min' in kwargs:
-            self.min = kwargs['min']
+        self.rotary_callback = rotary_callback
+        if min is not None:
+            self.min = min
             self.counter = self.min
             self.last_counter = self.min
-        if 'max' in kwargs:
-            self.max = kwargs['max']
-        if 'scale' in kwargs:
-            self.scale = kwargs['scale']
-        if 'debounce' in kwargs:
-            self.debounce = kwargs['debounce']
+        if max is not None:
+            self.max = max
+        if scale is not None:
+            self.scale = scale
+        if debounce is not None:
+            self.debounce = debounce
             self.pi.set_glitch_filter(self.clk_gpio, self.debounce)
             self.pi.set_glitch_filter(self.dt_gpio, self.debounce)
 
-    def setup_switch(self, **kwargs):
-        if 'debounce' in kwargs:
-            self.sw_gpio_debounce = kwargs['debounce']
-        if 'long_press' in kwargs:
-            self.long_press_opt = kwargs['long_press']
-        if 'sw_gpio_short_callback' in kwargs:
-            self.sw_gpio_short_callback = kwargs['sw_gpio_short_callback']
-        if 'sw_gpio_long_callback' in kwargs:
-            self.sw_gpio_long_callback = kwargs['sw_gpio_long_callback']
+    def setup_switch(self,
+                     sw_short_callback=None,
+                     sw_long_callback=None,
+                     debounce=None,
+                     long_press=None
+                     ):
+        assert sw_short_callback is not None or sw_long_callback is not None
+        if sw_short_callback is not None:
+            self.sw_short_callback = sw_short_callback
+        if sw_long_callback is not None:
+            self.sw_long_callback = sw_long_callback
+        if debounce is not None:
+            self.sw_debounce = debounce
+        if long_press is not None:
+            self.long_press_opt = long_press
 
     def watch(self):
         """
