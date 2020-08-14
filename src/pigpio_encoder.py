@@ -1,5 +1,5 @@
 # Rotary encoder class based on pigpio library
-# version: 0.2.2
+# version: 0.2.4
 
 try:
     import pigpio
