@@ -75,7 +75,8 @@ class Rotary:
     def counter(self, value):
         if self._counter != value:
             self._counter = value
-            self.rotary_callback(self._counter)
+            if self.rotary_callback:
+                self.rotary_callback(self._counter)
 
     def clk_gpio_fall(self, gpio, level, tick):
         if len(self.sequence) > 2:
@@ -85,6 +86,8 @@ class Rotary:
     def clk_gpio_rise(self, gpio, level, tick):
         self.sequence += clk_gpio0
         if self.sequence == SEQUENCE_UP:
+            if self.up_callback:
+                self.up_callback()
             if self.counter < self.max:
                 self.counter += self.scale
             self.sequence = ''
@@ -97,6 +100,8 @@ class Rotary:
     def dt_gpio_rise(self, gpio, level, tick):
         self.sequence += dt_gpio0
         if self.sequence == SEQUENCE_DOWN:
+            if self.down_callback:
+                self.down_callback()
             if self.counter > self.min:
                 self.counter -= self.scale
             self.sequence = ''
@@ -121,14 +126,20 @@ class Rotary:
             self.short_press()
 
     def setup_rotary(self,
-                    rotary_callback,
+                    rotary_callback=None,
+                    up_callback=None,
+                    down_callback=None,
                     min = None,
                     max = None,
                     scale = None,
                     debounce = None,
                      ):
+        if not (rotary_callback or up_callback or down_callback):
+            print('At least one callback should be given')
         # rotary callback has to be set first since the self.counter property depends on it
         self.rotary_callback = rotary_callback
+        self.up_callback = up_callback
+        self.down_callback = down_callback
         if min is not None:
             self.min = min
             self.counter = self.min
