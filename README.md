@@ -41,14 +41,14 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 
     ```python
     def up_callback():
-        # some action is rotated upward
+        # some action if rotated upward
     ```
 
 - create a callback function for Down-Rotation events.
 
     ```python
     def down_callback():
-        # some action is rotated upward
+        # some action if rotated downward
     ```
 
 - create callbacks functions for the Switch
