@@ -48,22 +48,37 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
         # some action...
       ```
 - create the rotary object
-    > here you setup the pin number as keyword argument. If you don't pass the switch parameter the switch won't be activated. You must use BCM numbering.
+    > here you setup the gpio id as keyword argument. If you don't pass the switch parameter the switch won't be activated.
 
     ```python
-    my_rotary = Rotary(clk=pin, dt=pin, sw=pin)
+    my_rotary = Rotary(
+            clk_gpio=<gpio_id of clk signal>, 
+            dt_gpio=<gpio_id of dt signal>, 
+            sw_gpio=<gpio_id of switch signal>
+            )
     ```
 - setup the rotary encoder
     > here you can setup min and max values for the encoder, the increase/decrease value, a debouce value (default 300ms) and the callback function.
 
     ```python
-    my_rotary.setup_rotary(min=min_value, max=max__value, scale=scale_value, debounce=debounce_value, rotary_callback=rotary_callback)
+    my_rotary.setup_rotary(
+            min=<min_value>, 
+            max=<max_value>, 
+            scale=<scale_value>, 
+            debounce=<debounce_value>, 
+            rotary_callback=<rotary_callback>
+            )
     ```
 - setup the switch
     > if you have specified the switch pin when creating the encoder object, here you can setup the debounce value, the long press option and the callbacks.
 
     ```python
-    my_rotary.setup_switch(debounce=debounce_value, long_press=True, sw_short_callback=sw_short_callback, sw_long_callback=sw_long_callback)
+    my_rotary.setup_switch(
+            debounce=<debounce_value>, 
+            long_press=<True>, 
+            sw_short_callback=<sw_short_callback>, 
+            sw_long_callback=<sw_long_callback>
+            )
     ```
 
 - start the listener
@@ -82,7 +97,11 @@ def rotary_callback(counter):
 def sw_short():
     print("Switch pressed")
 
-my_rotary = Rotary(clk=27, dt=22, sw=17)
+my_rotary = Rotary(
+            clk_gpio=27, 
+            dt_gpio=22, 
+            sw_gpio=17
+            )
 my_rotary.setup_rotary(rotary_callback=rotary_callback)
 my_rotary.setup_switch(sw_short_callback=sw_short)
 
@@ -104,9 +123,24 @@ def sw_short():
 def sw_long():
     print("Switch long press")
 
-my_rotary = Rotary(clk=27, dt=22, sw=17)
-my_rotary.setup_rotary(min=10, max=300, scale=5, debounce=200, rotary_callback=rotary_callback)
-my_rotary.setup_switch(debounce=200, long_press=True, sw_short_callback=sw_short, sw_long_callback=sw_long)
+my_rotary = Rotary(
+                clk_gpio=27, 
+                dt_gpio=22, 
+                sw_gpio=17
+                )
+my_rotary.setup_rotary(
+                min=10, 
+                max=300, 
+                scale=5, 
+                debounce=200, 
+                rotary_callback=rotary_callback
+                )
+my_rotary.setup_switch(
+                debounce=200, 
+                long_press=True, 
+                sw_short_callback=sw_short, 
+                sw_long_callback=sw_long
+                )
 
 my_rotary.watch()
 
