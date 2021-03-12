@@ -94,10 +94,10 @@ class Rotary:
         if self.sequence == SEQUENCE_UP:
             if self.up_callback:
                 self.up_callback()
-            if self.counter < self.max:
+            if self.counter + self.scale <= self.max:
                 self.counter += self.scale
             elif self.wrap_around:
-                self.counter = self.min
+                self.counter = (self.counter + self.scale) % (self.max + 1) + self.min
             self.sequence = ''
 
     def dt_gpio_fall(self, _gpio, _level, _tick):
@@ -110,10 +110,10 @@ class Rotary:
         if self.sequence == SEQUENCE_DOWN:
             if self.down_callback:
                 self.down_callback()
-            if self.counter > self.min:
+            if self.counter - self.scale >= self.min:
                 self.counter -= self.scale
             elif self.wrap_around:
-                self.counter = self.max
+                self.counter = (self.counter - self.scale) % (self.max + 1)
             self.sequence = ''
 
     def sw_gpio_rise(self, _gpio, _level, _tick):
