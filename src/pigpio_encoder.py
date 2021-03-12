@@ -96,6 +96,8 @@ class Rotary:
                 self.up_callback()
             if self.counter < self.max:
                 self.counter += self.scale
+            elif self.wrap_around:
+                self.counter = self.min
             self.sequence = ''
 
     def dt_gpio_fall(self, _gpio, _level, _tick):
@@ -110,6 +112,8 @@ class Rotary:
                 self.down_callback()
             if self.counter > self.min:
                 self.counter -= self.scale
+            elif self.wrap_around:
+                self.counter = self.max
             self.sequence = ''
 
     def sw_gpio_rise(self, _gpio, _level, _tick):
@@ -140,6 +144,7 @@ class Rotary:
             max=None,
             scale=None,
             debounce=None,
+            wrap_around=None,
          ):
         if not (rotary_callback or up_callback or down_callback):
             print('At least one callback should be given')
@@ -147,6 +152,7 @@ class Rotary:
         self.rotary_callback = rotary_callback
         self.up_callback = up_callback
         self.down_callback = down_callback
+        self.wrap_around = wrap_around
         if min is not None:
             self.min = min
             self.counter = self.min
