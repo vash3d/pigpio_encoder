@@ -113,7 +113,7 @@ class Rotary:
             if self.counter - self.scale >= self.min:
                 self.counter -= self.scale
             elif self.wrap_around:
-                self.counter = (self.counter - self.scale) % (self.max + 1)
+                self.counter = (self.counter - self.min - self.scale) % (self.max + 1)
             self.sequence = ''
 
     def sw_gpio_rise(self, _gpio, _level, _tick):
