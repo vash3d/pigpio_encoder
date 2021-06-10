@@ -26,7 +26,6 @@ setup(name='pigpio_encoder',
       author_email='vash.3d@gmail.com',
       license='GNU GPLv3',
       package_dir={'': 'src'},
-      packages=find_packages(where='src'),
       include_package_data=True,
       zip_safe=False,
       install_requires = [
