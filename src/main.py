@@ -1,18 +1,21 @@
 from pigpio_encoder import Rotary
 
 def rotary_callback(counter):
+    print("General rotation")
     print("Counter value: ", counter)
 
 def sw_short():
     print("Switch pressed")
 
-def up_callback():
+def up_callback(counter):
     print("Up rotation")
+    print("Counter value: ", counter)
 
-def down_callback():
+def down_callback(counter):
     print("Down rotation")
+    print("Counter value: ", counter)
 
-my_rotary = Rotary(clk_gpio=27, dt_gpio=22, sw_gpio=17)
+my_rotary = Rotary(clk_gpio=13, dt_gpio=19, sw_gpio=26)
 my_rotary.setup_rotary(
         rotary_callback=rotary_callback,
         up_callback=up_callback,
