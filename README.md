@@ -27,7 +27,7 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 ## How to use
 - import the module
     ```python
-    from pigpio_encoder import Rotary
+    from pigpio_encoder.rotary import Rotary
     ```
 - create a callback function for the Rotary Encoder counter.
     > You must pass a positional argument to retrieve the counter value.
@@ -119,27 +119,33 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
 
 ___
 #### Basic example using default values
+
 ```python
-from pigpio_encoder import Rotary
+from pigpio_encoder.rotary import Rotary
+
 
 def rotary_callback(counter):
-    print("Counter value: ", counter)
+  print("Counter value: ", counter)
+
 
 def sw_short():
-    print("Switch pressed")
+  print("Switch pressed")
+
 
 def up_callback():
-    print("Up rotation")
+  print("Up rotation")
+
 
 def down_callback():
-    print("Down rotation")
+  print("Down rotation")
+
 
 my_rotary = Rotary(clk_gpio=27, dt_gpio=22, sw_gpio=17)
 my_rotary.setup_rotary(
-        rotary_callback=rotary_callback,
-        up_callback=up_callback,
-        down_callback=down_callback,
-        )
+  rotary_callback=rotary_callback,
+  up_callback=up_callback,
+  down_callback=down_callback,
+)
 my_rotary.setup_switch(sw_short_callback=sw_short)
 
 my_rotary.watch()
@@ -147,36 +153,41 @@ my_rotary.watch()
 ___
 
 #### Example using all the Features
+
 ```python
-from pigpio_encoder import Rotary
+from pigpio_encoder.rotary import Rotary
+
 
 def rotary_callback(counter):
-    print("Counter value: ", counter)
+  print("Counter value: ", counter)
+
 
 def sw_short():
-    print("Switch short press")
+  print("Switch short press")
+
 
 def sw_long():
-    print("Switch long press")
+  print("Switch long press")
+
 
 my_rotary = Rotary(
-                clk_gpio=27,
-                dt_gpio=22,
-                sw_gpio=17
-                )
+  clk_gpio=27,
+  dt_gpio=22,
+  sw_gpio=17
+)
 my_rotary.setup_rotary(
-                min=10,
-                max=300,
-                scale=5,
-                debounce=200,
-                rotary_callback=rotary_callback
-                )
+  min=10,
+  max=300,
+  scale=5,
+  debounce=200,
+  rotary_callback=rotary_callback
+)
 my_rotary.setup_switch(
-                debounce=200,
-                long_press=True,
-                sw_short_callback=sw_short,
-                sw_long_callback=sw_long
-                )
+  debounce=200,
+  long_press=True,
+  sw_short_callback=sw_short,
+  sw_long_callback=sw_long
+)
 
 my_rotary.watch()
 
