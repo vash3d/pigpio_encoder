@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+import setuptools
 
 from codecs import open
 from os import path
@@ -8,7 +8,7 @@ file_path = path.abspath(path.dirname(__file__))
 with open(path.join(file_path, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-setup(name='pigpio_encoder',
+setuptools.setup(name='pigpio_encoder',
       version='0.2.3',
       description='Python module for for quickly interface a KY040 rotary encoder with Raspberry Pi.',
       long_description=long_description,
@@ -26,6 +26,7 @@ setup(name='pigpio_encoder',
       author_email='vash.3d@gmail.com',
       license='GNU GPLv3',
       package_dir={'': 'src'},
+      packages=setuptools.find_packages(where="src"),
       include_package_data=True,
       zip_safe=False,
       install_requires = [
