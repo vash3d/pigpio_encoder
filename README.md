@@ -116,6 +116,8 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
     ```python
     my_rotary.watch()
     ```
+  Please note that calling .watch() this is only for demostration purposes. It is not neccessary for the encoder to operate it can even cause problems.
+
 
 ___
 #### Basic example using default values
@@ -150,6 +152,9 @@ my_rotary.setup_switch(sw_short_callback=sw_short)
 
 my_rotary.watch()
 ```
+  Please note that calling .watch() this is only for demostration purposes. It is not neccessary for the encoder to operate it can even cause problems.
+
+
 ___
 
 #### Example using all the Features
@@ -192,6 +197,7 @@ my_rotary.setup_switch(
 my_rotary.watch()
 
 ```
+  Please note that calling .watch() this is only for demostration purposes. It is not neccessary for the encoder to operate it can even cause problems.
 
 ___
 
