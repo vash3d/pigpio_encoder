@@ -9,8 +9,8 @@ with open(path.join(file_path, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setuptools.setup(name='pigpio_encoder',
-      version='0.2.3',
-      description='Python module for for quickly interface a KY040 rotary encoder with Raspberry Pi.',
+      version='0.2.4',
+      description='Python module for for quickly interface a KY040 rotary encoder with Raspberry Pi and Micropython on ESP32.',
       long_description=long_description,
       long_description_content_type='text/markdown',
       classifiers=[
