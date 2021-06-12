@@ -92,13 +92,13 @@ class Rotary:
         self.clk_state = val
 
     def clk_gpio_fall(self ):
-        print('clk_gpio_fall')
+#        print('clk_gpio_fall')
         if len(self.sequence) > 2:
             self.sequence = ''
         self.sequence += clk_gpio1
 
-    def clk_gpio_rise(self):
-        print('clk_gpio_rise')
+    def clk_gpio_rise(self): 
+#        print('clk_gpio_rise')
         self.sequence += clk_gpio0
         if self.sequence == SEQUENCE_UP:
             if self.counter < self.max:
@@ -116,13 +116,13 @@ class Rotary:
         self.dt_state = val
 
     def dt_gpio_fall(self):
-        print('dt_gpio_fall')
+#        print('dt_gpio_fall')
         if len(self.sequence) > 2:
             self.sequence = ''
         self.sequence += dt_gpio1
 
     def dt_gpio_rise(self):
-        print('dt_gpio_rise')
+#        print('dt_gpio_rise')
         self.sequence += dt_gpio0
         if self.sequence == SEQUENCE_DOWN:
             if self.counter > self.min:
@@ -140,13 +140,13 @@ class Rotary:
         self.sw_state = val
 
     def sw_gpio_rise(self):
-        print('sw_gpio_rise')
+#        print('sw_gpio_rise')
         if self.long_press_opt:
             if not self.long:
                 self.short_press()
 
     def sw_gpio_fall(self):
-        print('sw_gpio_fall')
+#        print('sw_gpio_fall')
         if self.long_press_opt:
             self.long = False
             press_time = time.time()
