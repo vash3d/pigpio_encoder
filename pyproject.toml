@@ -1,6 +1,22 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+[tool.poetry]
+name = "pigpio_encoder"
+version = "0.2.4"
+description = "Python module for quickly interface a KY040 rotary encoder with Raspberry Pi and Micropython on ESP32."
+authors = ["volker Jaenisch <volker.jaenisch@inqbus.de>", "<vash.3d@gmail.com>"]
+
+license = "GNU GPLv3"
+readme = "README.md"
+homepage = "https://github.com/vash3d/pigpio_encoder"
+repository = "https://github.com/vash3d/pigpio_encoder"
+keywords = ["encoder", "rotary", "raspberryPi", "Micropython", "ESP32"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
 ]
-build-backend = "setuptools.build_meta"
+
+[tool.poetry.dependencies]
+pigpio = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
