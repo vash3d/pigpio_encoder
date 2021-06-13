@@ -20,7 +20,7 @@ It's based on the [pigpio library](http://abyz.me.uk/rpi/pigpio/python.html) (ca
  - `sudo apt-get update`
  - `sudo apt-get install pigpio python-pigpio python3-pigpio`
 - Install the pigpio_encoder library
- - `pip install pigpio_encoder` (consider add --user option)
+ - `python3 -mpip install pigpio_encoder` (consider add --user option)
 - start pigpio daemon
  - `sudo pigpiod`
 
