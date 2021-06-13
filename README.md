@@ -1,6 +1,6 @@
 # Pigpio Encoder
 
-Version: 0.2.5
+Version: 0.2.4
 ### Requires Python 3
 
 #### Python module for the KY040 rotary encoder.
