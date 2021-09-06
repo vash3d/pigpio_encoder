@@ -49,10 +49,11 @@ class Rotary:
     wait_time = time.time()
     long = False
 
-    def __init__(self, clk_gpio=None, dt_gpio=None, sw_gpio=None):
+    def __init__(self, clk_gpio=None, dt_gpio=None, sw_gpio=None, debug=False):
         if not (clk_gpio and dt_gpio):
             raise BaseException("clk_gpio and dt_gpio pin must be specified!")
-
+        
+        self.DEBUG = debug
         self.pi = pigpio.pi()
         self.clk_gpio = clk_gpio
         self.dt_gpio = dt_gpio
@@ -85,11 +86,15 @@ class Rotary:
                 self.rotary_callback(self._counter)
 
     def clk_gpio_fall(self, _gpio, _level, _tick):
+        if self.DEBUG:
+            print(self.sequence + ':{}'.format(clk_gpio1))
         if len(self.sequence) > 2:
             self.sequence = ''
         self.sequence += clk_gpio1
 
     def clk_gpio_rise(self, _gpio, _level, _tick):
+        if self.DEBUG:
+            print(self.sequence + ':{}'.format(clk_gpio0))
         self.sequence += clk_gpio0
         if self.sequence == SEQUENCE_UP:
             if self.counter < self.max:
@@ -99,11 +104,15 @@ class Rotary:
             self.sequence = ''
 
     def dt_gpio_fall(self, _gpio, _level, _tick):
+        if self.DEBUG:
+            print(self.sequence + ':{}'.format(dt_gpio1))
         if len(self.sequence) > 2:
             self.sequence = ''
         self.sequence += dt_gpio1
 
     def dt_gpio_rise(self, _gpio, _level, _tick):
+        if self.DEBUG:
+            print(self.sequence + ':{}'.format(dt_gpio0))
         self.sequence += dt_gpio0
         if self.sequence == SEQUENCE_DOWN:
             if self.counter > self.min:

@@ -21,7 +21,7 @@ def down_callback(counter):
 
 
 def demo():
-    my_rotary = Rotary(clk_gpio=13, dt_gpio=19, sw_gpio=26)
+    my_rotary = Rotary(clk_gpio=13, dt_gpio=19, sw_gpio=26, debug=True)
     my_rotary.setup_rotary(
             rotary_callback=rotary_callback,
             up_callback=up_callback,
