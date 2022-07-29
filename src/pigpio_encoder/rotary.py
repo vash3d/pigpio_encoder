@@ -149,6 +149,8 @@ class Rotary:
             max=None,
             scale=None,
             debounce=None,
+            start_offset:float=None,
+            end_offset:float=None
          ):
         if not (rotary_callback or up_callback or down_callback):
             print('At least one callback should be given')
@@ -168,7 +170,14 @@ class Rotary:
             self.debounce = debounce
             self.pi.set_glitch_filter(self.clk_gpio, self.debounce)
             self.pi.set_glitch_filter(self.dt_gpio, self.debounce)
-
+        # Setting start_offset will let the counter start at + some float
+        if start_offset is not None:
+            self.last_counter = self.min + start_offset
+            self.counter = self.min + start_offset
+        # Counter stops before it reaches the end at - some float 
+        if end_offset is not None:
+            self.last_counter = self.max - end_offset
+            self.counter = self.max - end_offset  
     def setup_switch(self,
                      sw_short_callback=None,
                      sw_long_callback=None,
